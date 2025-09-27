@@ -1,7 +1,7 @@
-import React from 'react';
-import ChatList from './ChatList';
-import UserProfile from './UserProfile';
-import { X } from 'lucide-react';
+import React from "react";
+import ChatList from "./ChatList";
+import UserProfile from "./UserProfile";
+import { X } from "lucide-react";
 
 export default function Sidebar({
   chats,
@@ -21,15 +21,25 @@ export default function Sidebar({
   setDarkMode,
   onLogout,
   setSidebarOpen,
+  sidebarOpen = false,
 }) {
   return (
-    <div className={`fixed inset-y-0 left-0 z-50 w-80 sm:w-72 ${darkMode ? 'bg-gray-800' : 'bg-white border-r border-gray-200'} transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 flex flex-col`}>
-      <div className={`flex items-center justify-between p-4 border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+    <div
+      className={`${
+        sidebarOpen ? "translate-x-0" : "-translate-x-full"
+      } fixed inset-y-0 left-0 z-50 w-80 sm:w-72 ${
+        darkMode ? "bg-gray-800" : "bg-white border-r border-gray-200"
+      } transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 flex flex-col`}>
+      <div
+        className={`flex items-center justify-between p-4 border-b ${
+          darkMode ? "border-gray-700" : "border-gray-200"
+        }`}>
         <h1 className="text-xl font-bold">ChatBuddy</h1>
         <button
           onClick={() => setSidebarOpen(false)}
-          className={`lg:hidden p-2 rounded ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} transition-colors`}
-        >
+          className={`lg:hidden p-2 rounded ${
+            darkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"
+          } transition-colors`}>
           <X size={20} />
         </button>
       </div>
@@ -37,11 +47,14 @@ export default function Sidebar({
       <div className="flex-1 overflow-hidden flex flex-col">
         <div className="p-4">
           <button
-            onClick={onNewChat}
-            className={`w-full flex items-center gap-3 p-3 rounded-lg ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-blue-50 hover:bg-blue-100 text-blue-700'} transition-colors font-medium`}
-          >
+            onClick={() => onNewChat()}
+            className={`w-full flex items-center gap-3 p-3 rounded-lg ${
+              darkMode
+                ? "bg-gray-700 hover:bg-gray-600"
+                : "bg-blue-50 hover:bg-blue-100 text-blue-700"
+            } transition-colors font-medium`}>
             <PlusIcon />
-            New Chat
+            Create New Chat
           </button>
         </div>
 
@@ -61,7 +74,10 @@ export default function Sidebar({
         </div>
       </div>
 
-      <div className={`border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'} p-4`}>
+      <div
+        className={`border-t ${
+          darkMode ? "border-gray-700" : "border-gray-200"
+        } p-4`}>
         <UserProfile
           user={user}
           showUserMenu={showUserMenu}
@@ -82,5 +98,3 @@ function PlusIcon() {
     </svg>
   );
 }
-
-

@@ -11,6 +11,16 @@ const chatSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    messages: {
+      type: [
+        {
+          text: { type: String },
+          isBot: { type: Boolean, default: false },
+          timestamp: { type: Date, default: Date.now },
+        },
+      ],
+      default: [],
+    },
     lastActivity: {
       type: Date,
       default: Date.now,

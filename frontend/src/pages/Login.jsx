@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -20,50 +19,7 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const validateForm = () => {
-  //   const newErrors = {};
-
-  //   if (!formData.email) {
-  //     newErrors.email = "Email is required";
-  //   } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-  //     newErrors.email = "Please enter a valid email";
-  //   }
-
-  //   if (!formData.password) {
-  //     newErrors.password = "Password is required";
-  //   } else if (formData.password.length < 6) {
-  //     newErrors.password = "Password must be at least 6 characters";
-  //   }
-
-  //   setErrors(newErrors);
-  //   return Object.keys(newErrors).length === 0;
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   if (!validateForm()) return;
-
-  //   navigate("/");
-
-  //   try {
-  //     // Simulate API call
-  //     await new Promise((resolve) => setTimeout(resolve, 1500));
-
-  //     // In a real app, you'd handle the login API call here
-  //     console.log("Login attempt:", formData);
-
-  //     // Simulate successful login
-  //     alert("Login successful! (This is a demo)");
-  //   } catch (error) {
-  //     setErrors({
-  //       submit: "Login failed. Please try again.",
-  //       error: error.message,
-  //     });
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+  // form validation and demo simulation removed — using real API call below
 
   const handleSubmit = async (e) => {
     e.preventDefault();

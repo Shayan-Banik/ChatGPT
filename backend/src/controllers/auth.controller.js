@@ -67,4 +67,24 @@ const userLogin = async (req, res) => {
   });
 };
 
-module.exports = { userRegister, userLogin };
+const userMe = async (req, res) => {
+  if (!req.user) return res.status(401).json({ message: "Unauthorized" });
+
+  const user = req.user;
+  res.status(200).json({
+    user: {
+      email: user.email,
+      fullName: user.fullName,
+      _id: user._id,
+    },
+  });
+};
+
+module.exports = { userRegister, userLogin, userMe };
+
+const userLogout = async (req, res) => {
+  res.clearCookie("token");
+  return res.status(200).json({ message: "Logged out" });
+};
+
+module.exports.userLogout = userLogout;
