@@ -28,7 +28,7 @@ const Login = () => {
     setErrors({});
 
     axios
-      .post("http://localhost:3000/api/auth/login", formData, {
+      .post("https://chatbuddy-sl9g.onrender.com/api/auth/login", formData, {
         withCredentials: true,
       })
       .then((response) => {

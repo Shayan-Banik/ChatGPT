@@ -111,7 +111,7 @@ const Register = () => {
 
     axios
       .post(
-        "http://localhost:3000/api/auth/register",
+        "https://chatbuddy-sl9g.onrender.com/api/auth/register",
         {
           email: formData.email,
           fullName: {

@@ -68,7 +68,7 @@ const Home = () => {
     // Fetch auth first. If authenticated, fetch chats and initialize socket.
     const init = async () => {
       try {
-        const resUser = await axios.get("http://localhost:3000/api/auth/me", {
+        const resUser = await axios.get("https://chatbuddy-sl9g.onrender.com/api/auth/me", {
           withCredentials: true,
         });
         if (resUser.data && resUser.data.user) {
@@ -83,7 +83,7 @@ const Home = () => {
 
           // fetch chats for authenticated user
           try {
-            const res = await axios.get("http://localhost:3000/api/chat", {
+            const res = await axios.get("https://chatbuddy-sl9g.onrender.com/api/chat", {
               withCredentials: true,
             });
             const serverChats = res.data.chats.reverse() || [];
@@ -113,7 +113,7 @@ const Home = () => {
 
           // initialize socket only for authenticated users
           try {
-            const socket = ioClient("http://localhost:3000", {
+            const socket = ioClient("https://chatbuddy-sl9g.onrender.com", {
               withCredentials: true,
             });
             socketRef.current = socket;
@@ -175,7 +175,7 @@ const Home = () => {
   // Initialize socket.io client and listeners
   useEffect(() => {
     try {
-      const socket = ioClient("http://localhost:3000", {
+      const socket = ioClient("https://chatbuddy-sl9g.onrender.com", {
         withCredentials: true,
       });
       socketRef.current = socket;
@@ -259,7 +259,7 @@ const Home = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/chat",
+        "https://chatbuddy-sl9g.onrender.com/api/chat",
         {
           title,
           messages: newChat.messages,
@@ -368,11 +368,11 @@ const Home = () => {
     if (!user || !user.email) return;
 
     try {
-      await axios.delete(`http://localhost:3000/api/chat/${chatId}`, {
+      await axios.delete(`https://chatbuddy-sl9g.onrender.com/api/chat/${chatId}`, {
         withCredentials: true,
       });
       // refetch chats to ensure state matches server
-      const res = await axios.get("http://localhost:3000/api/chat", {
+      const res = await axios.get("https://chatbuddy-sl9g.onrender.com/api/chat", {
         withCredentials: true,
       });
       const serverChats = res.data.chats || [];
@@ -419,7 +419,7 @@ const Home = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/api/auth/logout",
+        "https://chatbuddy-sl9g.onrender.com/api/auth/logout",
         {},
         { withCredentials: true }
       );
