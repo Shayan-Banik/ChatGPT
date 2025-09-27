@@ -10,7 +10,7 @@ const chatRoutes = require("./routes/chat.routes");
 const app = express();
 
 /* Enable CORS */
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"];
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://chatbuddy-sl9g.onrender.com" ];
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -30,8 +30,9 @@ app.use(express.static(path.join(__dirname, '../public'))); // Serve static file
 app.use("/api/auth", authRoutes);
 app.use("/api/chat", chatRoutes);
 
-app.get('*name', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+/* Catch-all: send frontend index.html for any unknown route */
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 module.exports = app;
