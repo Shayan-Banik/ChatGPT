@@ -11,12 +11,7 @@ async function initSocketServer(httpServer) {
   const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"];
   const io = new Server(httpServer, {
     cors: {
-      origin: (origin, callback) => {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-          return callback(null, true);
-        }
-        return callback(new Error("CORS error: origin not allowed"));
-      },
+      origin: allowedOrigins, // just use the array directly
       methods: ["GET", "POST"],
       credentials: true,
     },
