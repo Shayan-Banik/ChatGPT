@@ -31,7 +31,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/chat", chatRoutes);
 
 /* Catch-all: send frontend index.html for any unknown route */
-app.get("*", (req, res) => {
+app.get("*/name", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
